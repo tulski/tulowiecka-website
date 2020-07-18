@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
-import { withRevealAnimation } from 'hoc';
 
 const CardWrapper = styled(motion.div)`
   position: relative;
@@ -45,15 +44,11 @@ const CardText = styled.p`
 
 const Card = ({ value, darkBackground = false }) => {
   return (
-    <CardWrapper
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
-      darkBackground={darkBackground}
-    >
+    <CardWrapper whileHover={{ scale: 1.05 }} darkBackground={darkBackground}>
       <Label>{value[0]}</Label>
       <CardText>{value}</CardText>
     </CardWrapper>
   );
 };
 
-export default withRevealAnimation(Card);
+export default Card;

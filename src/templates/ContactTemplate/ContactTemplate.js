@@ -6,8 +6,6 @@ import TextareaAutosize from 'react-textarea-autosize';
 import Input from 'components/Input/Input';
 import Blob from 'components/Blob/Blob';
 
-import { withRevealAnimation } from 'hoc';
-
 import avatarIcon from 'assets/icons/avatar.svg';
 import emailIcon from 'assets/icons/email.svg';
 import phoneIcon from 'assets/icons/phone.svg';
@@ -127,4 +125,4 @@ const ContactTemplate = ({ content: { name, email, phone, adress } }) => (
   </ContactWrapper>
 );
 
-export default withRevealAnimation(ContactTemplate);
+export default ContactTemplate;
