@@ -2,8 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { media } from 'utils';
 
-import { withRevealAnimation } from 'hoc';
-
 const StyledWrapper = styled.div`
   margin: 30px 0;
   text-align: center;
@@ -48,4 +46,4 @@ const DetailedText = ({ heading, paragraph }) => (
   </StyledWrapper>
 );
 
-export default withRevealAnimation(DetailedText);
+export default DetailedText;
