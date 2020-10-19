@@ -8,21 +8,14 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    // {
-    //   resolve: `gatsby-plugin-prefetch-google-fonts`,
-    //   options: {
-    //     fonts: [
-    //       {
-    //         family: `Open Sans`,
-    //         variants: [`400`, `700`],
-    //       },
-    //       {
-    //         family: `Maven Pro`,
-    //         variants: [`400`, `700`],
-    //       },
-    //     ],
-    //   },
-    // },
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        google: {
+          families: ['Maven Pro:800', 'Open Sans:400,700'],
+        },
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -56,7 +49,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/assets/images/favicon.png`, // This path is relative to the root of the site.
+        // icon: `src/assets/images/favicon.png`, // This path is relative to the root of the site.
       },
     },
     {
@@ -68,13 +61,11 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-root-import',
       options: {
-        src: path.join(__dirname, 'src'),
-        pages: path.join(__dirname, 'src/pages'),
         assets: path.join(__dirname, 'src/assets'),
-        utils: path.join(__dirname, 'src/utils'),
         components: path.join(__dirname, 'src/components'),
+        sections: path.join(__dirname, 'src/sections'),
         templates: path.join(__dirname, 'src/templates'),
-        hoc: path.join(__dirname, 'src/hoc'),
+        utils: path.join(__dirname, 'src/utils'),
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

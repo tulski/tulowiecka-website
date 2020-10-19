@@ -1,17 +1,22 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
+import { media } from 'utils';
 
 const LogoWrapper = styled(motion.div)`
   position: relative;
+  margin: 0 auto;
   width: min-content;
+
+  ${media.tablet`
+  margin: 0;
+  `}
 `;
 
 const Circle = styled(motion.div)`
   position: absolute;
-  top: 2.5px;
-  height: 20px;
-  width: 20px;
+  height: 1.5rem;
+  width: 1.5rem;
   border-radius: 50%;
 
   ${({ red }) =>
@@ -27,53 +32,30 @@ const Circle = styled(motion.div)`
 `;
 
 const LogoText = styled(motion.p)`
-  padding-left: 30px;
+  width: max-content;
+  padding-left: 2rem;
   margin: 0;
   color: #002c6f;
-  font-size: 22px;
+  font-size: ${({ theme }) => theme.fontSize.m};
   font-family: 'Maven Pro', sans-serif;
-  font-weight: 800;
+  font-weight: ${({ theme }) => theme.fontWeight.extraBold};
+  line-height: 1;
 `;
 
 const Logo = () => {
-  const circles = {
-    hidden: { opacity: 0 },
-    show: custom => ({
+  const circleVariants = {
+    hidden: {
+      x: '0%',
+    },
+    reveal: custom => ({
       x: custom,
-      opacity: 0.6,
     }),
   };
-
-  const text = {
-    hidden: {
-      x: -50,
-      opacity: 0,
-    },
-    show: {
-      x: 0,
-      opacity: 1,
-    },
-  };
-
   return (
-    <LogoWrapper whileHover={{ scale: 1.05 }}>
-      <Circle
-        red
-        custom={-5}
-        initial="hidden"
-        animate={'show'}
-        variants={circles}
-      />
-      <Circle
-        blue
-        custom={5}
-        initial="hidden"
-        animate={'show'}
-        variants={circles}
-      />
-      <LogoText initial="hidden" animate="show" variants={text}>
-        Tułowiecka
-      </LogoText>
+    <LogoWrapper initial="hidden" animate="reveal" whileHover="hidden">
+      <Circle red custom="-25%" variants={circleVariants} />
+      <Circle blue custom="25%" variants={circleVariants} />
+      <LogoText>Tułowiecka</LogoText>
     </LogoWrapper>
   );
 };

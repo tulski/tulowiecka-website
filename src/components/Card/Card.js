@@ -1,21 +1,33 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
+import { media } from 'utils';
+
+import Heading from 'components/Heading/Heading';
+import Paragraph from 'components/Paragraph/Paragraph';
 
 const CardWrapper = styled(motion.div)`
   position: relative;
-  margin: 16px auto;
+  margin: 1rem auto;
   background-color: ${({ theme }) => theme.light};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
-  border-radius: 16px;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border-radius: 1rem;
+  box-shadow: ${({ theme }) => theme.boxShadow.xLarge};
 
-  ${({ darkBackground }) =>
+  ${({ darkBackground, theme }) =>
     darkBackground &&
     css`
-      background-color: ${({ theme }) => theme.dark};
-      color: ${({ theme }) => theme.light};
+      background-color: ${theme.dark};
+      color: ${theme.light};
+    `}
+
+  ${({ empty, theme }) =>
+    empty &&
+    css`
+      background-color: transparent;
+      border: solid ${theme.light} 0.25rem;
+      box-shadow: ${theme.boxShadow.base};
     `}
 
   &::after {
@@ -26,29 +38,50 @@ const CardWrapper = styled(motion.div)`
   }
 `;
 
-const Label = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.l};
-  margin: 0;
-  position: absolute;
-  top: 16px;
-  right: 16px;
-`;
-
-const CardText = styled.p`
+const Label = styled(Heading)`
   position: absolute;
   margin: 0;
-  bottom: 16px;
-  left: 16px;
-  right: 16px;
+  top: 1rem;
+  right: 1rem;
+
+  ${media.laptop`
+    margin: 0;
+  `}
 `;
 
-const Card = ({ value, darkBackground = false }) => {
+const CardText = styled(Paragraph)`
+  position: absolute;
+  margin: 0;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+`;
+
+const Card = ({ value, darkBackground }) => {
   return (
-    <CardWrapper whileHover={{ scale: 1.05 }} darkBackground={darkBackground}>
-      <Label>{value[0]}</Label>
-      <CardText>{value}</CardText>
+    <CardWrapper
+      whileHover={{ scale: 1.05 }}
+      darkBackground={darkBackground}
+      empty={!value}
+    >
+      {value && (
+        <>
+          <Label>{value[0]}</Label>
+          <CardText>{value}</CardText>
+        </>
+      )}
     </CardWrapper>
   );
+};
+
+Card.propTypes = {
+  value: PropTypes.string,
+  darkBackground: PropTypes.bool,
+};
+
+Card.defaultProps = {
+  value: '',
+  darkBackground: false,
 };
 
 export default Card;

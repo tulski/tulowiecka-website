@@ -2,11 +2,11 @@ import styled from 'styled-components';
 import { media } from 'utils';
 
 const Input = styled.input`
-  width: 95%;
-  max-width: 280px;
-  margin: 0 auto 16px;
-  padding: 4px 16px;
-  font-size: ${({ theme }) => theme.fontSize.m};
+  width: 100%;
+  margin: 0;
+  margin-bottom: 1rem;
+  padding: 0.25rem 1rem;
+  font-size: ${({ theme }) => theme.fontSize.s};
   font-weight: ${({ theme }) => theme.regular};
   background-color: transparent;
   border: none;
@@ -23,9 +23,9 @@ const Input = styled.input`
     outline: none;
   }
 
-  ${media.tablet`
-  max-width: 450px;
-  `}
+  ${media.laptop`
+  font-size: ${({ theme }) => theme.fontSize.m};
+`}
 `;
 
 export default Input;

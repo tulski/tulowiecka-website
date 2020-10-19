@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { media } from 'utils';
 
+import Heading from 'components/Heading/Heading';
+
 const StyledWrapper = styled.div`
   margin: 30px 0;
   text-align: center;
@@ -15,17 +17,6 @@ const StyledWrapper = styled.div`
   &:nth-child(2) {
     margin-left: -30px;
   }
-  `}
-`;
-
-const Heading = styled.h3`
-  max-width: 420px;
-  font-size: ${({ theme }) => theme.fontSize.l};
-  font-weight: ${({ theme }) => theme.fontWeight.bold};
-  margin: 16px auto;
-
-  ${media.laptop`
-  max-width: 500px;
   `}
 `;
 
