@@ -38,11 +38,13 @@ const CardsWrapper = styled.div`
 
 const StyledServicesBlob = styled(ServicesBlob)`
   position: absolute;
+  top: -1%;
   height: 110%;
   width: 140%;
   overflow: visible;
 
   ${media.laptop`
+    top: -14%;
     height:135%;
   `};
 `;
@@ -68,16 +70,18 @@ const StyledColumn = styled.div`
       opacity: 0.5;
       margin: -7.5rem 2.5rem 0 -15rem;
 
-      ${media.laptop`
+      ${media.tablet`
         display: block;
       `}
     `}
 `;
 
 const DetailedWrapper = styled.div`
+  margin-top: 4rem;
   text-align: center;
 
   ${media.laptop`
+    margin-top: 0;
     display:flex;
     flex-direction:column;
     align-items:center;

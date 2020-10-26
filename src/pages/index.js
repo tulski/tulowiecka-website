@@ -74,7 +74,7 @@ const GlobalStyle = createGlobalStyle`
 const RootWrapper = styled.main`
   position: relative;
   width: 100%;
-  overflow: auto;
+  overflow: hidden;
 `;
 
 const IndexPage = () => (

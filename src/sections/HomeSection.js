@@ -8,9 +8,9 @@ import SectionTemplate from 'src/components/SectionTemplate';
 import Heading from 'src/components/Heading';
 import Paragraph from 'src/components/Paragraph';
 import HomeDecor from 'src/components/HomeDecor';
+import Blob from 'src/components/Blob';
 
 const HomeSvg = loadable(() => import('src/components/HomeSvg'));
-const Blob = loadable(() => import('src/components/Blob'));
 const SwipeArrow = loadable(() => import('src/components/SwipeArrow'));
 
 const HomeWrapper = styled.div`

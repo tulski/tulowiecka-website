@@ -114,7 +114,7 @@ const ContactSection = ({ content: { name, email, phone, adress } }) => (
         <div>
           <StyledHeading>Skontaktuj się z nami</StyledHeading>
           <Input placeholder="imię" name="name" />
-          <Input placeholder="numer telefonu" type="number" min="9" />
+          <Input placeholder="numer telefonu" name="phone" />
           <Input placeholder="e-mail" type="email" name="email" />
           <Input as={TextareaAutosize} maxRows="5" placeholder="wiadomość" />
         </div>

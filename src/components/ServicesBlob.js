@@ -1,7 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { useIntersectionObserver } from '@researchgate/react-intersection-observer';
 import { motion, useAnimation } from 'framer-motion';
+import { media } from 'src/utils';
+
+const Decor = styled(motion.path)`
+  display: none;
+
+  ${media.tablet`
+display:block;
+`}
+`;
 
 const ServicesBlob = ({ className }) => {
   const [visibility, setVisibility] = useState(false);
@@ -45,14 +55,14 @@ const ServicesBlob = ({ className }) => {
           strokeWidth="1.71818"
         />
       </g>
-      <motion.path
+      <Decor
         opacity="0.8"
         d="M498.274 786.607C498.274 779.309 504.19 773.393 511.487 773.393H545.465C552.762 773.393 558.678 779.309 558.678 786.607V821.528C558.678 828.825 552.762 834.741 545.465 834.741H511.487C504.19 834.741 498.274 828.825 498.274 821.528V786.607Z"
         fill="#FEFEFE"
         animate={controls}
         transition={transition}
       />
-      <motion.path
+      <Decor
         opacity="0.7"
         d="M468 111.213C468 103.916 473.916 98 481.213 98H515.19C522.488 98 528.404 103.916 528.404 111.213V146.134C528.404 153.432 522.488 159.348 515.19 159.348H481.213C473.916 159.348 468 153.432 468 146.134V111.213Z"
         fill="#FEFEFE"

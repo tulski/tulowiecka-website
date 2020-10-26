@@ -6,30 +6,33 @@ import { motion, useAnimation } from 'framer-motion';
 const AboutSvg = ({ className }) => {
   const controls = useAnimation();
 
+  const containerVariants = {
+    reveal: {
+      transition: {
+        staggerChildren: 0.3,
+        staggerDirection: -1,
+      },
+    },
+  };
+
   const lineVariants = {
     initial: {
       pathLength: 0,
     },
-    reveal: custom => ({
+    reveal: {
       pathLength: 1,
-      transition: {
-        duration: 0.3,
-        delay: custom * 0.3,
-      },
-    }),
+    },
   };
 
   const rectVariants = {
     initial: {
-      strokeWidth: 0,
+      scaleY: 0,
+      visibility: 'hidden',
     },
-    reveal: custom => ({
-      strokeWidth: 20,
-      transition: {
-        duration: 0.3,
-        delay: custom * 0.3,
-      },
-    }),
+    reveal: {
+      scaleY: 20,
+      visibility: 'visible',
+    },
   };
 
   const handleChange = (entry, unobserve) => {
@@ -249,121 +252,101 @@ const AboutSvg = ({ className }) => {
           fill="#7C5C5C"
         />
       </g>
-      <motion.g initial="initial" animate={controls}>
-        <motion.g>
-          <motion.path
-            d="M 370 10 L423 10"
-            stroke="#338FFF"
-            custom={6}
-            variants={rectVariants}
-          />
-          <motion.path
-            d="M 10 30 L63 30"
-            stroke="#338FFF"
-            custom={6}
-            variants={rectVariants}
-          />
-          <motion.path
-            d="M 374 71 L427 71"
-            stroke="#338FFF"
-            custom={6}
-            variants={rectVariants}
-          />
-          <motion.path
-            d="M 15 92 L68 92"
-            stroke="#374C79"
-            custom={6}
-            variants={rectVariants}
-          />
-        </motion.g>
-        <motion.g strokeDasharray="0 1">
-          <motion.path
-            d="M 111.023 90.4995 L67.0227 92.4995"
-            stroke="black"
-            custom={5}
-            variants={lineVariants}
-          />
-          <motion.path
-            d="M 110.61 90.3123 L 62.6096 30.3123"
-            stroke="black"
-            custom={5}
-            variants={lineVariants}
-          />
-          <motion.path
-            d="M 332.661 44.6322 L 370.661 9.63223"
-            stroke="black"
-            custom={5}
-            variants={lineVariants}
-          />
-          <motion.path
-            d="M 333.275 44.5824 L 374.275 71.5824"
-            stroke="black"
-            custom={5}
-            variants={lineVariants}
-          />
-        </motion.g>
-        <motion.g>
-          <motion.path
-            d="M 110 91 L 163 91"
-            stroke="#374C79"
-            custom={4}
-            variants={rectVariants}
-          />
-          <motion.path
-            d="M 281 44 L 334 44"
-            stroke="#374C79"
-            custom={4}
-            variants={rectVariants}
-          />
-        </motion.g>
-        <motion.g strokeDasharray="0 1">
-          <motion.path
-            d="M 202.976 93.4994 L 161.976 91.4994"
-            stroke="black"
-            custom={3}
-            variants={lineVariants}
-          />
-          <motion.path
-            d="M 253.56 95.763 L 281.56 43.763"
-            stroke="black"
-            custom={3}
-            variants={lineVariants}
-          />
-        </motion.g>
+      <motion.g animate="reveal" initial="initial" variants={containerVariants}>
+        <motion.path
+          d="M 370 10 L423 10"
+          stroke="#338FFF"
+          variants={rectVariants}
+        />
+        <motion.path
+          d="M 10 30 L63 30"
+          stroke="#338FFF"
+          variants={rectVariants}
+        />
+        <motion.path
+          d="M 374 71 L427 71"
+          stroke="#338FFF"
+          variants={rectVariants}
+        />
+        <motion.path
+          d="M 15 92 L68 92"
+          stroke="#374C79"
+          variants={rectVariants}
+        />
+        <motion.path
+          d="M 111.023 90.4995 L67.0227 92.4995"
+          stroke="black"
+          strokeDasharray="0 1"
+          variants={lineVariants}
+        />
+        <motion.path
+          d="M 110.61 90.3123 L 62.6096 30.3123"
+          stroke="black"
+          strokeDasharray="0 1"
+          variants={lineVariants}
+        />
+        <motion.path
+          d="M 332.661 44.6322 L 370.661 9.63223"
+          stroke="black"
+          strokeDasharray="0 1"
+          variants={lineVariants}
+        />
+        <motion.path
+          d="M 333.275 44.5824 L 374.275 71.5824"
+          stroke="black"
+          strokeDasharray="0 1"
+          variants={lineVariants}
+        />
+        <motion.path
+          d="M 110 91 L 163 91"
+          stroke="#374C79"
+          variants={rectVariants}
+        />
+        <motion.path
+          d="M 281 44 L 334 44"
+          stroke="#374C79"
+          variants={rectVariants}
+        />
+        <motion.path
+          d="M 202.976 93.4994 L 161.976 91.4994"
+          stroke="black"
+          strokeDasharray="0 1"
+          variants={lineVariants}
+        />
+        <motion.path
+          d="M 253.56 95.763 L 281.56 43.763"
+          stroke="black"
+          strokeDasharray="0 1"
+          variants={lineVariants}
+        />
         <motion.path
           d="M 202 94 L 255 94"
           stroke="#338FFF"
-          custom={2}
           variants={rectVariants}
         />
-        <motion.g strokeDasharray="0 1">
-          <motion.path
-            d="M 292.655 164.362 L 228.655 103.362"
-            stroke="black"
-            custom={1}
-            variants={lineVariants}
-          />
-          <motion.path
-            d="M 212.516 164.875 L 228.516 102.875"
-            stroke="black"
-            custom={1}
-            variants={lineVariants}
-          />
-        </motion.g>
-        <motion.g>
-          <motion.path
-            d="M 266 174 L 319 174"
-            stroke="#338FFF"
-            custom={0}
-            variants={rectVariants}
-          />
-          <motion.path
-            d="M 186 174 L 239 174"
-            stroke="#374C79"
-            custom={0}
-            variants={rectVariants}
-          />
-        </motion.g>
+        <motion.path
+          d="M 292.655 164.362 L 228.655 103.362"
+          stroke="black"
+          strokeDasharray="0 1"
+          variants={lineVariants}
+        />
+        <motion.path
+          d="M 212.516 164.875 L 228.516 102.875"
+          stroke="black"
+          strokeDasharray="0 1"
+          variants={lineVariants}
+        />
+
+        <motion.path
+          d="M 266 174 L 319 174"
+          stroke="#338FFF"
+          variants={rectVariants}
+        />
+        <motion.path
+          d="M 186 174 L 239 174"
+          stroke="#374C79"
+          variants={rectVariants}
+        />
       </motion.g>
     </svg>
   );
